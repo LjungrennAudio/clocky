@@ -1,0 +1,124 @@
+UNNAMED GROUP OF PEOPLE'S UNNAMED CLOCK MODULE
+
+ideas [to be] discussed:
+
+- check if this module exists - has something been missed? can we improve? can we make it as good even? etc.
+[think were ok - checked mod grid once, need 2nd onion
+
+people use a Doepfer A-160-2, amplifier like the A-183-3 (weak clock signal), an active buffer (ground issues) or a trigger modifier like the A-162 (slewed or otherwise invalid clock signal), 
+
+- what modules have clock/trig issues? will it fix em? can it be made to fix em if not?
+[search muffs/google for modules and units with clock/gate/trig issues; 
+go through mod grid identifying things using clocks or gates with same potential issues - look deep!
+so far:sq1 slewed clocks, es pulses spikes, marbles when supply voltage stabilizes slowly to its target voltage,
+ something that depends on which PSU you use, where your module is located, and how other modules on the bus board behave,
+PNW seems to be one that doesn’t like to be slaved, something with Rene?, 
+slaved Metropolis often needs a dedicated reset signal that is different from (earlier than) the reset bus all other slaved seqs get, .]
+
+- not mini pots
+
+- leds on other ins n outs to show clock/trig signal present/length?
+
+- what colour leds mean what? should dif colours display dif gate/trig length?
+
+- will it goes as smol as 4-6hp [is this wise? too crammed? ...[def wont fit 4hp!]
+
+- 5v internal generation ok?
+
+- bb needs to see if the delay and length times are a good range
+
+- are the 5v/10v suitable voltages for the output options [are they needed?if so what for?]
+[Within the A-100 usually any voltage beyond about +3V is treated as "high" (e.g. +5V, +8V, +10V, +12V will work) 
+and will trigger an ADSR or any other module with a Gate or Clock input (e.g. trigger delay, sequencer, clock divider, clock sequencer).]
+
+- from 0 V to +8 V for ADSRs; Trigger, Gate or Clock Signals typical voltage levels of 0/+5 V.
+
+- a database of known clock/gate/trig issues that are due to reset/clock/midi issues, 
+i.e. not voltage/spikes/slew/gnd issues to help those who might think they need this module but it wont help, 
+can post soltuions given in forums to save people time - that'll make us popular as a rource and goto info source on clocks etc - to go in the back of the manual perhaps?!
+
+
+*************
+BOM for as yet unnamed 'clock conditioner'
+
+type	part id				VALUE	pcs	note
+----	------------------------------	-----	------	--------------------------------------------------------
+resistors:___
+r	1,2,9,13,14,27,31,43,45		100k	8	all the same pretty much...
+
+r	4,5,6,7,9,11,12,16,17,18,19,21,
+	22,24,25,26,30,37,41,42,54,56,
+	57,59,60,62,64,66,67,69,70,72	47k	32	all the same pretty much...
+
+r	8,20,58,68			30k	4	all the same pretty much...
+
+r	51,52				10r	2	all the same pretty much...
+
+r	3,15,53,63			120k	4	all the same pretty much...
+
+r	10,23,61,71			330r	4	all the same pretty much...
+
+r	28,32,44,46			220k	4	all the same pretty much...
+
+r	29,36				2.2k	2	all the same pretty much...
+
+capacitors:___				
+c	9,10,17,18,19,20,23,24,25,26,
+	31,32,33,34,35,36		100n	17	ceramic c0g 2.5mm or equiv	
+
+c	1,2,27,28			22pf	4	ceramic c0g 2.5mm or equiv
+
+c	3,6,11,14			1n	4	ceramic c0g 2.5mm or equiv
+
+c	4,5,7,8,12,13,15,16		10n	8	ceramic c0g 2.5mm or equiv
+
+
+c	21,22				10uF	2	electrolytic, 25v, 2mm pin pitch, 5mm dia, 5mm height
+
+transistors:___
+t	1,2,3,4				BC457B	4	to-92 packacge
+
+diodes:___
+d	1,2				amber?	2	LED, 3mm
+
+d	3,4				SB130	2	or 1N5818, schottky power
+
+integrated  circuits:___
+ic	1				40106	1	cd4xxxb cmos logic hexinverter w/ schmitt trigger
+
+ic	2,3,6,7				TL074	4	opamp		
+
+ic	4,5				NE556	2	dual timer
+
+	___
+p	1,2,3,4				1M log	4	rotary pots
+
+	___
+j	x				jacks	8	3.5mm mono, un-switched - like PJ301BM or kobicon/clone [not too important for bb]
+
+	___
+[for 5v supply if not taken off bench psu]
+vr	x				lm2391	1	5v fixed voltage regulator, to92 package
+
+c	x				100n	1	ceramic c0g 2.5mm or equiv
+
+c	x				100uF	1	electrolytic, 25v, 2mm pin pitch, 5mm dia, 5mm height
+
+***********
+not needed for breadboarding - only for pcb
+
+connectors:___
+h	x				10pin	1	10pin boxed power header
+
+cn	1,2,6,7				3pin	4	3pin jumper header	
+
+cn	1,2,6,7				2pin	4	2 socket insulated jumper
+
+ics	1,2,3,4,5,6,7			14pin	7	ic sockets, 14pin
+
+	___
+cbl	x					1	10-16pin eurorack power cable
+
+	___
+also will be needed:			knobs, screws, pcb, faceplate,
+
